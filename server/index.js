@@ -32,25 +32,23 @@ app.get("/users", (req, res, next) => {
 });
 
 app.get("/login", (req,res, next) => {
-  username = req.query.username;
+  email = req.query.email;
   password = req.query.password;
-  var sql = "select password from users where username = ?";
-  db.all(sql, [username], (err, rows) => {
-    console.log(rows)
+  var sql = "select username, email, password from users where email = ?";
+  db.all(sql, [email], (err, rows) => {
     if (err) {
       res.status(400).json({"error": "Something went wrong with the login!"});
     }
     else if (rows.length == 0) {
-      res.status(400).json({"error": "Not a valid user!"})
+      res.status(400).json({"error": "Please enter valid credentials!"})
     } 
     else {
       check_password = rows[0].password;
       if (check_password != password) {
-        res.status(400).json({"error": "Not a valid password for the user!"})
+        res.status(400).json({"error": "Please enter valid credentials!"})
       } else {
         res.json({
-          "message": "success",
-          "data": rows
+          "username": rows[0].username
         })
       }
     }
@@ -62,16 +60,19 @@ app.post("/sign-up", (req,res, next) => {
   password = req.body.password;
   email = req.body.email;
 
+  sql = "select email from users where email = ?";  
+
   var sql = "INSERT INTO users (username, email, password) VALUES (?,?,?)"
   db.run(sql, [username, email, password], (err, rows) => {
     if (err) {
-      res.status(400).json({"error":err.message});
+      if (err.code == 'SQLITE_CONSTRAINT') {
+        res.status(400).json({"error": "Email already registered!"});
+      } else {
+        res.status(400).json({"error":err});
+      }
     }
     else {
-      res.json({
-        "message": "success",
-        "data": rows
-      })
+      res.send(200);
     }
   });
 });

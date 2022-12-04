@@ -5,30 +5,29 @@ import Popup from 'reactjs-popup';
 
 
 const Login = () => {
-    const [username, setUserName] = useState();
+    const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
     let navigate = useNavigate();
 
     const handleSubmit = async e => {
         e.preventDefault();
-        await axios.get('http://localhost:3000/login', { params: { username: username, password: password } }).then((response) => {
-            console.log(response)
+        await axios.get('http://localhost:3000/login', { params: { email: email, password: password } }).then((response) => {
             navigate({
                 pathname: '/profile',
-                search: username,
+                search: response.data.username,
             });
-        }).catch(response =>  
-            console.log(response.response.data.error)
-        )
+        }).catch((response) =>  {
+            alert(response.response.data.error);
+        })
       }
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
                 <label>
-                    <p>Username</p>
-                    <input type="text" onChange={e => setUserName(e.target.value)} />
+                    <p>Email</p>
+                    <input type="text" onChange={e => setEmail(e.target.value)} />
                 </label>
                 <label>
                     <p>Password</p>

@@ -12,11 +12,12 @@ const SignUp = () => {
     const handleSubmit = async e => {
         e.preventDefault();
         await axios.post('http://localhost:3000/sign-up', { username: username, password: password, email: email }).then((response) => {
-                console.log(response)
+                alert("You have successfully registered! Taking you back to the login page!");
                 navigate({
-                    pathname: '/profile',
-                    search: username,
+                    pathname: '/',
                 });
+        }).catch((response) => {
+            alert(response.response.data.error);
         })
       }
 

@@ -14,8 +14,7 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
             }else{
                 // Table just created, creating some rows
                 var insert = 'INSERT INTO users (username, email, password) VALUES (?,?,?)'
-                db.run(insert, ["admin","admin@example.com","admin123456"])
-                db.run(insert, ["user","user@example.com","user123456"])
+                db.run(insert, ["test","test","test"])
             }
         });
         
@@ -26,6 +25,16 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
             } else {
                 var insert = 'INSERT INTO logs (email, datetime, event) VALUES (?,?,?)'
                 db.run(insert, ["test","test","test"])
+            }
+        });
+
+        db.run(`CREATE TABLE liked_songs (id INTEGER PRIMARY KEY AUTOINCREMENT, email text, song text, artist text, album text, url text)`, 
+        (err) => {
+            if (err) {
+                // Table already created
+            } else {
+                var insert = 'INSERT INTO liked_songs (email, song, artist, album, url) VALUES (?,?,?,?,?)'
+                db.run(insert, ["test","test","test","test", "test"])
             }
         });
     }

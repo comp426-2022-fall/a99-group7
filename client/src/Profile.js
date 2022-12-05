@@ -74,7 +74,7 @@ const Profile = () => {
     return (
         <div>
             <div>
-                <button onClick={handleLikedSongs}>Liked Songs</button>
+                <button onClick={handleLikedSongs}>View Liked Songs</button>
                 <button onClick={handleDeleteProfile}>Delete Profile</button>
                 <button onClick={handleSignOut}>Sign Out</button>
             </div>

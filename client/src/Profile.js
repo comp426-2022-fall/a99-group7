@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import styles from './styles.css'
 
 const Profile = () => {
     let navigate = useNavigate();
@@ -74,14 +75,15 @@ const Profile = () => {
     return (
         <div>
             <div>
+                <img src='/logo.png' alt="logo"/>
                 <button onClick={handleLikedSongs}>View Liked Songs</button>
                 <button onClick={handleDeleteProfile}>Delete Profile</button>
                 <button onClick={handleSignOut}>Sign Out</button>
             </div>
             <div>
-                <table>
+                <table className={styles.profile}>
                     <tr>
-                        <th>Credential</th>
+                        <th>CREDENTIALS</th>
                     </tr>
                     <tr>
                         <th>Username</th>

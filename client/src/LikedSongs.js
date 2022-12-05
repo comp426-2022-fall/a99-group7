@@ -35,7 +35,7 @@ const LikedSongs = () => {
     const handleSong = async e => {
         e.preventDefault();
         await axios.post('http://localhost:3000/add-song', { email: email, URL: URL }).then((response) => {
-            navigate('/liked-songs', { state: { username: username, email: email } });
+            window.location.reload(true);
         }).catch((response) => {
             alert(response.response.data.error);
         })
@@ -43,14 +43,13 @@ const LikedSongs = () => {
 
     const deleteSong = async e => {
         await axios.post('http://localhost:3000/delete-song', { email: email, URL: e.target.getAttribute('url').toString() }).then((response) => {
-            navigate('/liked-songs', { state: { username: username, email: email } });
+            window.location.reload(true);
         }).catch((response) => {
             alert(response.response.data.error);
         })
     }
 
     const displaySongs = () => {
-        console.log(songs.data)
         if (songsLoaded == true) {
             return (songs.data.map((listValue, index) => {
                 return (

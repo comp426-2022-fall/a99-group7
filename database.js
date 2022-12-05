@@ -14,7 +14,6 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
             }else{
                 // Table just created, creating some rows
                 var insert = 'INSERT INTO users (username, email, password) VALUES (?,?,?)'
-                db.run(insert, ["test","test","test"])
             }
         });
         
@@ -24,7 +23,6 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
                 // Table already created
             } else {
                 var insert = 'INSERT INTO logs (email, datetime, event) VALUES (?,?,?)'
-                db.run(insert, ["test","test","test"])
             }
         });
 
@@ -34,7 +32,6 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
                 // Table already created
             } else {
                 var insert = 'INSERT INTO liked_songs (email, song, artist, album, url) VALUES (?,?,?,?,?)'
-                db.run(insert, ["test","test","test","test", "test"])
             }
         });
     }

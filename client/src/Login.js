@@ -1,8 +1,6 @@
 import React, {useState}  from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Popup from 'reactjs-popup';
-
 
 const Login = () => {
     const [email, setEmail] = useState();
@@ -13,10 +11,7 @@ const Login = () => {
     const handleSubmit = async e => {
         e.preventDefault();
         await axios.get('http://localhost:3000/login', { params: { email: email, password: password } }).then((response) => {
-            navigate({
-                pathname: '/profile',
-                search: response.data.username,
-            });
+            navigate('/profile', { state: { username: response.data.username, email: response.data.email } });
         }).catch((response) =>  {
             alert(response.response.data.error);
         })

@@ -13,9 +13,7 @@ const SignUp = () => {
         e.preventDefault();
         await axios.post('http://localhost:3000/sign-up', { username: username, password: password, email: email }).then((response) => {
                 alert("You have successfully registered! Taking you back to the login page!");
-                navigate({
-                    pathname: '/',
-                });
+                navigate('/');
         }).catch((response) => {
             alert(response.response.data.error);
         })

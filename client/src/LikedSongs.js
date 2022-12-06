@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import styles from './styles.css'
 
 const LikedSongs = () => {
     let navigate = useNavigate();
@@ -79,10 +80,10 @@ const LikedSongs = () => {
             <div>
                 <table>
                     <tr>
-                        <td>Song</td>
-                        <td>Artist</td>
-                        <td>Album</td>
-                        <td>Spotify URL</td>
+                        <td style = {{fontWeight: "bold", fontSize: 30}}>SONG</td>
+                        <td style = {{fontWeight: "bold", fontSize: 30}}>ARTIST</td>
+                        <td style = {{fontWeight: "bold", fontSize: 30}}>ALBUM</td>
+                        <td style = {{fontWeight: "bold", fontSize: 30}}>SPOTIFY URL</td>
                     </tr>
                     {displaySongs(songs)}
                 </table>

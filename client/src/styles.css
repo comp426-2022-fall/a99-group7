@@ -1,0 +1,42 @@
+body {
+    background-color: #1c1d1f;
+    color:#a3eeff;
+    text-align: center;
+    font-family:Arial Narrow, sans-serif;
+    font-size: 25px;
+    padding: 10px;
+    margin: 20px;
+}
+
+button {
+    background-color: #a3eeff;
+    color: #1c1d1f;
+    margin: 20px;
+    padding: 10px;
+    font-family:Arial Narrow, sans-serif;
+    font-size: 20px;
+}
+
+input {
+    padding: 10px;
+    margin: 20px;
+    width: 40%;
+    font-size: 20px;
+}
+
+h1 {
+    margin: 50px;
+}
+
+table {
+    text-align: left;
+    width: 100%;
+    padding: 20px;
+    font-family:Arial Narrow, sans-serif;
+    font-size: 25px;
+}
+
+img {
+    margin: 30px;
+    padding: 15px;
+}

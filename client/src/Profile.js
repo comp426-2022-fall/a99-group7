@@ -103,7 +103,7 @@ const Profile = () => {
                         <th>Password</th>
                         <th>********</th>
                         <th>
-                            <input type="text" onChange={e => setPasswordUpdate(e.target.value)} />
+                            <input type="password" onChange={e => setPasswordUpdate(e.target.value)} />
                             <button onClick={handlePasswordUpdate}>Update Password</button>
                         </th>
                     </tr>

@@ -186,8 +186,8 @@ app.post("/add-song", (req,res, next) => {
   const email = req.body.email;
   const URL = (req.body.URL).split('/')[4].split('?')[0];
   datetime = new Date().toLocaleString();
-  let client_id = '';
-  let client_secret = '';
+  let client_id = 'e4d510659ab244f2be9e75fb3a8706ef';
+  let client_secret = 'eb8f6205cc8140a9bd3c9c2b07a04c8b';
   var song, artist, album, url;
 
   var authOptions = {

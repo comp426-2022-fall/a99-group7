@@ -11,7 +11,7 @@ body {
 button {
     background-color: #a3eeff;
     color: #1c1d1f;
-    margin: 20px;
+    margin: 15px;
     padding: 10px;
     font-family:Arial Narrow, sans-serif;
     font-size: 20px;
@@ -19,7 +19,7 @@ button {
 
 input {
     padding: 10px;
-    margin: 20px;
+    margin: 15px;
     width: 40%;
     font-size: 20px;
 }
@@ -32,11 +32,21 @@ table {
     text-align: left;
     width: 100%;
     padding: 20px;
+    margin: 20px;
     font-family:Arial Narrow, sans-serif;
-    font-size: 25px;
+    font-size: 23px;
 }
 
 img {
     margin: 30px;
     padding: 15px;
+}
+
+a {
+    color: #a3eeff;
+}
+
+.tableColumns {
+    color: #a3eeff;
+    font-weight: bold;
 }

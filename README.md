@@ -1,5 +1,5 @@
 
-# TuneIn - your digital music profile 
+# TuneIn: Your Digital Music Profile 
 
 COMP 426 Final Project - Group 7
 

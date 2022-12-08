@@ -44,7 +44,7 @@ Information about the database are detailed in this [file](docs/db.md).
 
 ## Planning 
 
-We used Github's project board to create, assign, and keep track of the tasks needed to complete our roles. Further details and documentation about our planning process are found in this [file](docs/planning.md).
+We used Github's project board to create, assign, and keep track of the tasks needed to complete our roles. Further details and documentation about our planning process are found in this [file](docs/plan.md).
 
 ## Team Management 
 

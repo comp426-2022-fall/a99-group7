@@ -11,7 +11,7 @@ const Login = () => {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        await axios.get('http://localhost:3000/login', { params: { email: email, password: password } }).then((response) => {
+        await axios.get('http://localhost:3000/app/login', { params: { email: email, password: password } }).then((response) => {
             navigate('/profile', { state: { username: response.data.username, email: response.data.email } });
         }).catch((response) =>  {
             alert(response.response.data.error);
@@ -20,7 +20,7 @@ const Login = () => {
 
     return (
         <div>
-            <img src="logo.png" alt="logo"/>
+            <img src={require("./logo.png")} width="200px" height="200px" alt="logo"/>
             <h1>TuneIn</h1>
             <form onSubmit={handleSubmit}>
                 <label>

@@ -15,7 +15,7 @@ const Profile = () => {
 
     const handleLikedSongs = async e => {
         e.preventDefault();
-        await axios.get('http://localhost:3000/liked-songs', { params: { username: username, email: email } }).then((response) => {
+        await axios.get('http://localhost:3000/app/liked-songs', { params: { username: username, email: email } }).then((response) => {
             navigate('/liked-songs', { state: { username: username, email: email } });
         }).catch((response) =>  {
             alert(response.response.data.error);
@@ -24,7 +24,7 @@ const Profile = () => {
 
     const handleDeleteProfile = async e => {
         e.preventDefault();
-        await axios.post('http://localhost:3000/delete-profile', { username: username, email: email }).then((response) => {
+        await axios.post('http://localhost:3000/app/delete-profile', { username: username, email: email }).then((response) => {
                 alert("You have successfully deleted your profile!");
                 navigate('/');
         }).catch((response) => {
@@ -34,7 +34,7 @@ const Profile = () => {
 
     const handleSignOut = async e => {
         navigate('/');
-        await axios.get('http://localhost:3000/sign-out', { params: { username: username, email: email } }).then((response) => {
+        await axios.get('http://localhost:3000/app/sign-out', { params: { username: username, email: email } }).then((response) => {
             navigate('/');
         }).catch((response) =>  {
             alert(response.response.data.error);
@@ -44,7 +44,7 @@ const Profile = () => {
     const handleUsernameUpdate = async e => {
         e.preventDefault();
         console.log(usernameUpdate)
-        await axios.post('http://localhost:3000/username-update', { username: username, email: email, update: usernameUpdate }).then((response) => {
+        await axios.post('http://localhost:3000/app/username-update', { username: username, email: email, update: usernameUpdate }).then((response) => {
                 alert("You have successfully updated your username!");
                 navigate('/profile', { state: { username: usernameUpdate, email: email } });
         }).catch((response) => {
@@ -54,7 +54,7 @@ const Profile = () => {
 
     const handleEmailUpdate = async e => {
         e.preventDefault();
-        await axios.post('http://localhost:3000/email-update', { username: username, email: email, update: emailUpdate }).then((response) => {
+        await axios.post('http://localhost:3000/app/email-update', { username: username, email: email, update: emailUpdate }).then((response) => {
                 alert("You have successfully updated your email!");
                 navigate('/profile', { state: { username: username, email: emailUpdate } });
         }).catch((response) => {
@@ -64,7 +64,7 @@ const Profile = () => {
 
     const handlePasswordUpdate = async e => {
         e.preventDefault();
-        await axios.post('http://localhost:3000/password-update', { username: username, email: email, update: passwordUpdate }).then((response) => {
+        await axios.post('http://localhost:3000/app/password-update', { username: username, email: email, update: passwordUpdate }).then((response) => {
                 alert("You have successfully updated your password!");
                 navigate('/profile', { state: { username: username, email: email } });
         }).catch((response) => {
@@ -74,7 +74,7 @@ const Profile = () => {
 
     return (
         <div>
-            <img src='/logo.png' alt="logo"/>
+            <img src={require("./logo.png")} width="200px" height="200px" alt="logo"/>
             <div>
                 <button onClick={handleLikedSongs}>View Liked Songs</button>
                 <button onClick={handleDeleteProfile}>Delete Profile</button>

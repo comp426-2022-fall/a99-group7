@@ -12,7 +12,7 @@ app.use(express.json());
 
 var db = require("../database.js")
 
-app.get("/login", (req,res, next) => {
+app.get("/app/login", (req,res, next) => {
   email = req.query.email;
   password = req.query.password;
   datetime = new Date().toLocaleString();
@@ -42,7 +42,7 @@ app.get("/login", (req,res, next) => {
   });
 });
 
-app.post("/sign-up", (req, res, next) => {
+app.post("/app/sign-up", (req, res, next) => {
   username = req.body.username;
   password = req.body.password;
   email = req.body.email;
@@ -66,7 +66,7 @@ app.post("/sign-up", (req, res, next) => {
   });
 });
 
-app.post("/delete-profile", (req, res, next) => {
+app.post("/app/delete-profile", (req, res, next) => {
   username = req.body.username;
   email = req.body.email;
   datetime = new Date().toLocaleString();
@@ -83,7 +83,7 @@ app.post("/delete-profile", (req, res, next) => {
   });
 });
 
-app.post("/username-update", (req, res, next) => {
+app.post("/app/username-update", (req, res, next) => {
   username = req.body.username;
   email = req.body.email;
   update = req.body.update;
@@ -106,7 +106,7 @@ app.post("/username-update", (req, res, next) => {
   });
 });
 
-app.post("/email-update", (req, res, next) => {
+app.post("/app/email-update", (req, res, next) => {
   username = req.body.username;
   email = req.body.email;
   update = req.body.update;
@@ -129,7 +129,7 @@ app.post("/email-update", (req, res, next) => {
   });
 });
 
-app.post("/password-update", (req, res, next) => {
+app.post("/app/password-update", (req, res, next) => {
   username = req.body.username;
   email = req.body.email;
   update = req.body.update;
@@ -152,7 +152,7 @@ app.post("/password-update", (req, res, next) => {
   });
 });
 
-app.get("/sign-out", (req,res, next) => {
+app.get("/app/sign-out", (req,res, next) => {
   username = req.query.username;
   email = req.query.email;
   datetime = new Date().toLocaleString();
@@ -162,7 +162,7 @@ app.get("/sign-out", (req,res, next) => {
   res.sendStatus(200);
 });
 
-app.get("/liked-songs", (req,res, next) => {
+app.get("/app/liked-songs", (req,res, next) => {
   username = req.query.username;
   email = req.query.email;
   datetime = new Date().toLocaleString();
@@ -172,7 +172,7 @@ app.get("/liked-songs", (req,res, next) => {
   res.sendStatus(200);
 });
 
-app.get("/profile-page", (req,res, next) => {
+app.get("/app/profile-page", (req,res, next) => {
   username = req.query.username;
   email = req.query.email;
   datetime = new Date().toLocaleString();
@@ -182,7 +182,7 @@ app.get("/profile-page", (req,res, next) => {
   res.sendStatus(200);
 });
 
-app.post("/add-song", (req,res, next) => {
+app.post("/app/add-song", (req,res, next) => {
   const email = req.body.email;
   const URL = (req.body.URL).split('/')[4].split('?')[0];
   datetime = new Date().toLocaleString();
@@ -216,7 +216,7 @@ app.post("/add-song", (req,res, next) => {
         song = body.name;
         artist = body.artists[0].name;
         album = body.album.name;
-        url = body.href;
+        url = body.external_urls.spotify;
         const sql = "INSERT INTO liked_songs (email, song, artist, album, url) VALUES (?,?,?,?,?)"
         db.run(sql, [email, song, artist, album, url], (err, rows) => {
           if (err) {
@@ -233,7 +233,7 @@ app.post("/add-song", (req,res, next) => {
   });
 })
 
-app.get("/get-liked-songs", (req, res, next) => {
+app.get("/app/get-liked-songs", (req, res, next) => {
   const email = req.query.email;
   const datetime = new Date().toLocaleString();
 
@@ -251,7 +251,7 @@ app.get("/get-liked-songs", (req, res, next) => {
   });
 });
 
-app.post("/delete-song",  (req, res, next) => {
+app.post("/app/delete-song",  (req, res, next) => {
   const email = req.body.email;
   const URL = req.body.URL;
   const datetime = new Date().toLocaleString();
@@ -264,6 +264,19 @@ app.post("/delete-song",  (req, res, next) => {
     } else {
       db.run("INSERT INTO logs (email, datetime, event) VALUES (?,?,'Success_DeleteLikedSong')", [email, datetime]);
       res.sendStatus(200);
+    }
+  });
+})
+
+app.get("/app/logs",  (req, res, next) => {
+  const sql = "SELECT * FROM logs";
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      res.status(400).json({"error": err.message});
+    } else {
+      res.json({
+        "data": rows
+      })
     }
   });
 })

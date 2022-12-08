@@ -50,3 +50,9 @@ a {
     color: #a3eeff;
     font-weight: bold;
 }
+
+.image {
+    background-image: url("./logo.png");
+    width: 300px;
+    height: auto;
+  }

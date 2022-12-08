@@ -36,7 +36,7 @@ A link to a demo of our project can be found [here](https://youtu.be/fmiu5iuj_QA
 
 ## User Interactions 
 
-Information about the possible user interactions are detailed in this [file].
+Information about the possible user interactions are detailed in this [file](/docs/user-interactions.md).
 
 ## API 
 

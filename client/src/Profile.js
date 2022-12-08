@@ -74,7 +74,7 @@ const Profile = () => {
 
     return (
         <div>
-            <img src={require("./logo.png")} width="200px" height="200px" alt="logo"/>
+            <img src={require("./logo.png")} width="250px" height="200px" alt="logo"/>
             <div>
                 <button onClick={handleLikedSongs}>View Liked Songs</button>
                 <button onClick={handleDeleteProfile}>Delete Profile</button>

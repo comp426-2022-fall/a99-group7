@@ -5,10 +5,10 @@
 This is the root endpoint for our backend.
 
 ## (GET) /app/login/
-This endpoint logs the user into the website with the provided email and password. We validate the user's email and password with the database. It also keeps track of user login event in the logs table.
+This endpoint logs the user into the website with the provided email and password. We validate the user's email and password with the database. It also keeps track of login event in the logs table.
 
 ## (POST) /app/sign-up/
-This endpoint creates a new user account with the provided username, email, and password. If the username or email is already registered, it returns an error message; otherwise, a new user account is created in the users database. It also keeps track of the user sign up event in the logs table.
+This endpoint creates a new user account with the provided username, email, and password. If the username or email is already registered, it returns an error message; otherwise, a new user account is created in the users database. It also keeps track of the sign up event in the logs table.
 
 ## (POST) /app/delete-profile/
 This endpoint deletes a user's profile from the database. It also keeps track of the user deleting their profile in the logs table.
@@ -32,7 +32,7 @@ This endpoint keeps track of when the user accessed the liked songs page in the 
 This endpoint keeps track of when the user accessed the profile page in the logs table.
 
 ## (POST) /app/add-song/
-Given a URL, this endpoint uses the Spotify API to pull the song information such as the song name, artist, album, and Spotify URL and adds the song to the user's list of liked song. If there is an error, an error message is returned. It also keeps track of the user adding a song to their collection in the logs table.
+Given a URL, this endpoint uses the Spotify API to pull the song information such as the song name, artist, album, and Spotify URL and adds the song to the user's collection. If there is an error, an error message is returned. It also keeps track of the user adding a song to their collection in the logs table.
 
 ## (GET) /app/get-liked-songs/
 This endpoint retrieves all the songs liked by a user. It also keeps track of whether the backend is successfully able to retrieve all the liked songs in the logs table.

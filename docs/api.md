@@ -1,35 +1,44 @@
 
 # API Endpoints
 
-## app.get("/login", (req,res, next)
-Logins the user with the email and password and checks credentials to see if it is a valid email and password combination.  
+## (GET) /app/
+This is the root endpoint for our backend.
 
-## app.post("/sign-up", (req, res, next)
-receives the username, email, and password from the login and then stores the values in the database. If the account is already registered, it gives an error message saying that the "Username or email already registered!". If the username, emai, and password are valid, then you can succesfully sign up.
+## (GET) /app/login/
+This endpoint logs the user into the website with the provided email and password. We validate the user's email and password with the database. It also keeps track of user login event in the logs table.
 
-## app.post("/username-update", (req, res, next)
-Changes the username if the user wants to. It looks at whether or not the username exists already in the database to make sure that the new username is not a duplicate. While changing the username, if the user chooses a username that has previously been chosen, then an error message pops up saying "Username or email already registered". Otherwise, it succesfully updates and the new username is updated in the back end. 
+## (POST) /app/sign-up/
+This endpoint creates a new user account with the provided username, email, and password. If the username or email is already registered, it returns an error message; otherwise, a new user account is created in the users database. It also keeps track of the user sign up event in the logs table.
 
+## (POST) /app/delete-profile/
+This endpoint deletes a user's profile from the database. It also keeps track of the user deleting their profile in the logs table.
 
-## app.get("/sign-out", (req,res, next) 
-Signs the logged in user out and stores the email, datetime, and event in a log into a database in the back end so that there is a list of who signs out at which time. 
+## (POST) /app/username-update/
+This endpoint updates the username to the desired username that the user has provided. If the username is already taken, an error message is returned; else, the database is updated. It also keeps track of the user updating their username in the logs table.
 
-## app.get("/liked-songs", (req,res, next)
-Given a song url, it goes to the Spotify API, pulls the song information and pulls it and stores it with the corresponding username, time, and email
+## (POST) /app/email-update/
+This endpoint updates the email to the desired email that the user has provided. If the email is already taken, an error message is returned; else, the database is updated. It also keeps track of the user updating their email in the logs table.
 
+## (POST) /app/password-update/
+This endpoint updates the password to the desired password that the user has provided. It also keeps track of the user updating their password in the logs table.
 
-## app.get("/profile-page", (req,res, next)
-Pulls up the profile page of the selected user. 
+## (GET) /app/sign-out/
+This endpoint signs the logged in user out and keeps track of the sign out event in the logs table.
 
-## app.post("/add-song", (req,res, next)
-Given a URL, it goes to the Spotify API, pulls the song information(song, artist, url, and album) and stores it under the correspondig profile. If there is an error, it gives an error message saying "Unable to add song!". Otherwise it adds the song. 
+## (GET) /app/liked-songs/
+This endpoint keeps track of when the user accessed the liked songs page in the logs table.
 
-## app.get("/get-liked-songs", (req, res, next)
-Pulls up the liked songs
+## (GET) /app/profile-page/
+This endpoint keeps track of when the user accessed the profile page in the logs table.
 
-## app.post("/delete-song",  (req, res, next)
-Deletes the song
+## (POST) /app/add-song/
+Given a URL, this endpoint uses the Spotify API to pull the song information such as the song name, artist, album, and Spotify URL and adds the song to the user's list of liked song. If there is an error, an error message is returned. It also keeps track of the user adding a song to their collection in the logs table.
 
+## (GET) /app/get-liked-songs/
+This endpoint retrieves all the songs liked by a user. It also keeps track of whether the backend is successfully able to retrieve all the liked songs in the logs table.
 
+## (POST) /app/delete-song/
+This endpoint deletes a liked song from a user's collection. It also keeps track whether the song was successfully deleted from a user's collection in the logs table.
 
-## 
+## (GET) /app/logs/
+This endpoint retrieves all the information from the logs table.

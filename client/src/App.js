@@ -7,6 +7,7 @@ import Profile from './Profile';
 import LikedSongs from './LikedSongs'
 import Logs from './Logs'
 
+// Creates routes for all pages (main page is login)
 function App() {
   return (
     <BrowserRouter>

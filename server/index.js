@@ -9,10 +9,17 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
+// Loads database
 var db = require("../database.js")
 
-app.get("/app/login", (req,res, next) => {
+// Root Endpoint
+app.get("/app/", (req,res, next) => {
+  console.log('ROOT ENDPOINT');
+});
+
+// Login Endpoint: Used to log user in; if no user with email exists, returns error; if email correct and password incorrect, 
+// returns error; otherwise, logs user in and forwards credential information to front-end; inserts respective event into logs table
+app.get("/app/login/", (req,res, next) => {
   email = req.query.email;
   password = req.query.password;
   datetime = new Date().toLocaleString();
@@ -40,7 +47,9 @@ app.get("/app/login", (req,res, next) => {
   });
 });
 
-app.post("/app/sign-up", (req, res, next) => {
+// Sign Up Endpoint: Used to create a new account; if username or email taken, returns error; otherwise, creates new account; 
+// inserts respective event into logs table
+app.post("/app/sign-up/", (req, res, next) => {
   username = req.body.username;
   password = req.body.password;
   email = req.body.email;
@@ -62,7 +71,8 @@ app.post("/app/sign-up", (req, res, next) => {
   });
 });
 
-app.post("/app/delete-profile", (req, res, next) => {
+// Delete Profile Endpoint: Deletes a user profile; inserts respective event into logs table
+app.post("/app/delete-profile/", (req, res, next) => {
   username = req.body.username;
   email = req.body.email;
   datetime = new Date().toLocaleString();
@@ -79,7 +89,8 @@ app.post("/app/delete-profile", (req, res, next) => {
   });
 });
 
-app.post("/app/username-update", (req, res, next) => {
+// Username Update Endpoint: Updates username for a given user; inserts respective event into logs table
+app.post("/app/username-update/", (req, res, next) => {
   username = req.body.username;
   email = req.body.email;
   update = req.body.update;
@@ -102,7 +113,8 @@ app.post("/app/username-update", (req, res, next) => {
   });
 });
 
-app.post("/app/email-update", (req, res, next) => {
+// Email Update Endpoint: Updates email for a given user; inserts respective event into logs table
+app.post("/app/email-update/", (req, res, next) => {
   username = req.body.username;
   email = req.body.email;
   update = req.body.update;
@@ -125,7 +137,8 @@ app.post("/app/email-update", (req, res, next) => {
   });
 });
 
-app.post("/app/password-update", (req, res, next) => {
+// Password Update Endpoint: Updates password for a given user; inserts respective event into logs table
+app.post("/app/password-update/", (req, res, next) => {
   username = req.body.username;
   email = req.body.email;
   update = req.body.update;
@@ -148,7 +161,8 @@ app.post("/app/password-update", (req, res, next) => {
   });
 });
 
-app.get("/app/sign-out", (req,res, next) => {
+// Sign Out Endpoint: Records sign out event in logs table
+app.get("/app/sign-out/", (req,res, next) => {
   username = req.query.username;
   email = req.query.email;
   datetime = new Date().toLocaleString();
@@ -158,7 +172,8 @@ app.get("/app/sign-out", (req,res, next) => {
   res.sendStatus(200);
 });
 
-app.get("/app/liked-songs", (req,res, next) => {
+// Liked Songs Endpoint: Records access to liked songs page by user in logs table
+app.get("/app/liked-songs/", (req,res, next) => {
   username = req.query.username;
   email = req.query.email;
   datetime = new Date().toLocaleString();
@@ -168,7 +183,8 @@ app.get("/app/liked-songs", (req,res, next) => {
   res.sendStatus(200);
 });
 
-app.get("/app/profile-page", (req,res, next) => {
+// Profile Page Endpoint: Records access to profile page by user in logs table
+app.get("/app/profile-page/", (req,res, next) => {
   username = req.query.username;
   email = req.query.email;
   datetime = new Date().toLocaleString();
@@ -178,7 +194,8 @@ app.get("/app/profile-page", (req,res, next) => {
   res.sendStatus(200);
 });
 
-app.post("/app/add-song", (req,res, next) => {
+// Add Song Endpoint: Uses Spotify API to add song to user's list of liked songs
+app.post("/app/add-song/", (req,res, next) => {
   const email = req.body.email;
   const URL = (req.body.URL).split('/')[4].split('?')[0];
   datetime = new Date().toLocaleString();
@@ -229,7 +246,8 @@ app.post("/app/add-song", (req,res, next) => {
   });
 })
 
-app.get("/app/get-liked-songs", (req, res, next) => {
+// Get Liked Songs Endpoint: Retrieves all liked songs by user
+app.get("/app/get-liked-songs/", (req, res, next) => {
   const email = req.query.email;
   const datetime = new Date().toLocaleString();
 
@@ -247,7 +265,8 @@ app.get("/app/get-liked-songs", (req, res, next) => {
   });
 });
 
-app.post("/app/delete-song",  (req, res, next) => {
+// Delete Song Endpoint: Deletes liked song from user's list of liked songs
+app.post("/app/delete-song/",  (req, res, next) => {
   const email = req.body.email;
   const URL = req.body.URL;
   const datetime = new Date().toLocaleString();
@@ -264,7 +283,8 @@ app.post("/app/delete-song",  (req, res, next) => {
   });
 })
 
-app.get("/app/logs",  (req, res, next) => {
+// Logs Endpoint: Retrieves all logs 
+app.get("/app/logs/",  (req, res, next) => {
   const sql = "SELECT * FROM logs";
   db.all(sql, [], (err, rows) => {
     if (err) {
@@ -277,7 +297,7 @@ app.get("/app/logs",  (req, res, next) => {
   });
 })
 
-//Set the port that you want the server to run on
+
 const port = process.env.PORT || 3000;
 app.listen(port);
-console.log('App is listening on port ' + port);
+console.log('Backend listening on port ' + port);

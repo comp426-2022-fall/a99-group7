@@ -3,15 +3,17 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './styles.css'
 
+// Login component to help user sign-in to website
 const Login = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
     let navigate = useNavigate();
 
+    // Verifies user has a valid account or displays error
     const handleSubmit = async e => {
         e.preventDefault();
-        await axios.get('http://localhost:3000/app/login', { params: { email: email, password: password } }).then((response) => {
+        await axios.get('http://localhost:3000/app/login/', { params: { email: email, password: password } }).then((response) => {
             navigate('/profile', { state: { username: response.data.username, email: response.data.email } });
         }).catch((response) =>  {
             alert(response.response.data.error);

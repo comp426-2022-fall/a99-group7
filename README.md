@@ -17,7 +17,8 @@ A link to a demo of our project can be found [here](https://youtu.be/fmiu5iuj_QA
 2. cd into the repo using ```cd a99-group7``` and run ```npm install``` to install the dependencies needed to run our project. More details about the dependencies we used can be found in the Dependencies section below
 3. cd into the client directory using ```cd client``` and run ```npm install``` again
 4. Return to the main project directory using ```cd ..```
-5. Run ```npm start```. This should automatically open http://localhost:3001/. If not, you can navigate to this link in your browser.
+5. Run ```npm start```. This should automatically open http://localhost:3001/ and spin up the backend. If not, you can navigate to this link in your browser.
+6. If there is any issues with the DB, you can delete the ```db.sqlite``` file and run ```node database.js```.
 6. When you are done running the program, hit '''CONTROL+C''' to end the session. 
 
 ## Dependencies 

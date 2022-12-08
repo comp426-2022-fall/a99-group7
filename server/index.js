@@ -19,11 +19,9 @@ app.get("/app/login", (req,res, next) => {
   var sql = "select username, email, password from users where email = ?";
   db.all(sql, [email], (err, rows) => {
     if (err) {
-      db.run("INSERT INTO logs (email, datetime, event) VALUES (?,?,'Fail_Login')", [email, datetime]);
       res.status(400).json({"error": "Something went wrong with the login!"});
     }
     else if (rows.length == 0) {
-      db.run("INSERT INTO logs (email, datetime, event) VALUES (?,?,'Fail_Credential_Login')", [email, datetime]);
       res.status(400).json({"error": "Please enter valid credentials!"})
     } 
     else {
@@ -52,10 +50,8 @@ app.post("/app/sign-up", (req, res, next) => {
   db.run(sql, [username, email, password], (err, rows) => {
     if (err) {
       if (err.code == 'SQLITE_CONSTRAINT') {
-        db.run("INSERT INTO logs (email, datetime, event) VALUES (?,?,'Fail_Credential_SignUp')", [email, datetime]);
         res.status(400).json({"error": "Username or email already registered!"});
       } else {
-        db.run("INSERT INTO logs (email, datetime, event) VALUES (?,?,'Fail_SignUp')", [email, datetime]);
         res.status(400).json({"error":err.message});
       }
     }

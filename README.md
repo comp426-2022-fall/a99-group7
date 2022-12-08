@@ -42,6 +42,10 @@ Information about the possible user interactions are detailed in this [file](doc
 
 Information about the API user endpoints used are detailed in this [file](docs/api.md).
 
+## Database
+
+Information about the database are detailed in this [file](docs/db.md).
+
 ## Planning 
 
 We used Github's project board to create, assign, and keep track of the tasks needed to complete our roles. Further details and documentation about our planning process are found in this [file](docs/planning.md).

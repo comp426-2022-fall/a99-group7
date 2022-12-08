@@ -5,15 +5,18 @@ COMP 426 Final Project - Group 7
 
 ## Summary 
 
-TuneIn is a web app that allows users to create their own music profile sharing their liked songs. Users can add and delete songs as their music taste evolves. 
+TuneIn is a web app that allows users to create their own music profile and share their favorite songs. Users can add and delete songs as their music taste evolves. Users can delete or update their account details at any time. 
 
 ## Demo 
 
-[need to do this]
+A link to a demo of our project can be found [here](https://youtu.be/fmiu5iuj_QA). In this video, we discuss the main features of our web app, the challenges we faced, and future directions we see for TuneIn. 
 
 ## Setup Instructions 
 
-[need to do this]
+1. Clone the respository
+2. Open the repo and run '''npm install''' to install the dependencies needed to run our project. More details about the dependencies we used can be found in the Dependencies section below
+3. Run '''npm start'''. This should automatically open http://localhost:3001/. If not, you can navigate to this link in your browser.
+4. When you are done running the program, hit '''CONTROL+C''' to end the session. 
 
 ## Dependencies 
 

@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import styles from './styles.css'
 
+// Profile component displays user's credentials, button to navigate to liked songs, button to delete account, and button to sign out
 const Profile = () => {
     let navigate = useNavigate();
 
@@ -13,18 +14,20 @@ const Profile = () => {
     const [emailUpdate, setEmailUpdate] = useState();
     const [passwordUpdate, setPasswordUpdate] = useState();
 
+    // Navigates to liked songs
     const handleLikedSongs = async e => {
         e.preventDefault();
-        await axios.get('http://localhost:3000/app/liked-songs', { params: { username: username, email: email } }).then((response) => {
+        await axios.get('http://localhost:3000/app/liked-songs/', { params: { username: username, email: email } }).then((response) => {
             navigate('/liked-songs', { state: { username: username, email: email } });
         }).catch((response) =>  {
             alert(response.response.data.error);
         })
     }
 
+    // Deletes user profile and navigates to login page
     const handleDeleteProfile = async e => {
         e.preventDefault();
-        await axios.post('http://localhost:3000/app/delete-profile', { username: username, email: email }).then((response) => {
+        await axios.post('http://localhost:3000/app/delete-profile/', { username: username, email: email }).then((response) => {
                 alert("You have successfully deleted your profile!");
                 navigate('/');
         }).catch((response) => {
@@ -32,19 +35,21 @@ const Profile = () => {
         })
     }
 
+    // Signs user out and navigates to login page
     const handleSignOut = async e => {
         navigate('/');
-        await axios.get('http://localhost:3000/app/sign-out', { params: { username: username, email: email } }).then((response) => {
+        await axios.get('http://localhost:3000/app/sign-out/', { params: { username: username, email: email } }).then((response) => {
             navigate('/');
         }).catch((response) =>  {
             alert(response.response.data.error);
         })
     }
 
+    // Updates the username for a user if it is a valid change
     const handleUsernameUpdate = async e => {
         e.preventDefault();
         console.log(usernameUpdate)
-        await axios.post('http://localhost:3000/app/username-update', { username: username, email: email, update: usernameUpdate }).then((response) => {
+        await axios.post('http://localhost:3000/app/username-update/', { username: username, email: email, update: usernameUpdate }).then((response) => {
                 alert("You have successfully updated your username!");
                 navigate('/profile', { state: { username: usernameUpdate, email: email } });
         }).catch((response) => {
@@ -52,9 +57,10 @@ const Profile = () => {
         })
     }
 
+    // Updates the email for a user if it is a valid change
     const handleEmailUpdate = async e => {
         e.preventDefault();
-        await axios.post('http://localhost:3000/app/email-update', { username: username, email: email, update: emailUpdate }).then((response) => {
+        await axios.post('http://localhost:3000/app/email-update/', { username: username, email: email, update: emailUpdate }).then((response) => {
                 alert("You have successfully updated your email!");
                 navigate('/profile', { state: { username: username, email: emailUpdate } });
         }).catch((response) => {
@@ -62,9 +68,10 @@ const Profile = () => {
         })
     }
 
+    // Updates the password for a user 
     const handlePasswordUpdate = async e => {
         e.preventDefault();
-        await axios.post('http://localhost:3000/app/password-update', { username: username, email: email, update: passwordUpdate }).then((response) => {
+        await axios.post('http://localhost:3000/app/password-update/', { username: username, email: email, update: passwordUpdate }).then((response) => {
                 alert("You have successfully updated your password!");
                 navigate('/profile', { state: { username: username, email: email } });
         }).catch((response) => {

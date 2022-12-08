@@ -1,13 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
+// Logs component displays all user logs (this component cannot be accessed by users)
 const Logs = () => {
     const [logs, setLogs] = useState([]);
     const [logsLoaded, setLogsLoaded] = useState(false);
 
+    // When page initially loads, website retrieves all logs
     useEffect(() => {
         (async () => {
-            await axios.get('http://localhost:3000/app/logs').then((response) => {
+            await axios.get('http://localhost:3000/app/logs/').then((response) => {
                 setLogs(response.data);
                 setLogsLoaded(true);
             }).catch((response) =>  {
@@ -16,6 +18,7 @@ const Logs = () => {
         })();
     }, []);
 
+    // Displays all logs in a table format
     const displayLogs = () => {
         if (logsLoaded == true) {
             return (logs.data.map((listValue, index) => {

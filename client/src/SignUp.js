@@ -2,6 +2,7 @@ import React, {useState}  from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+// SignUp component used to create new user
 const SignUp = () => {
     const [username, setUserName] = useState();
     const [password, setPassword] = useState();
@@ -9,9 +10,10 @@ const SignUp = () => {
 
     let navigate = useNavigate();
 
+    // Verifies creation of user account
     const handleSubmit = async e => {
         e.preventDefault();
-        await axios.post('http://localhost:3000/app/sign-up', { username: username, password: password, email: email }).then((response) => {
+        await axios.post('http://localhost:3000/app/sign-up/', { username: username, password: password, email: email }).then((response) => {
                 alert("You have successfully registered! Taking you back to the login page!");
                 navigate('/');
         }).catch((response) => {

@@ -36,11 +36,11 @@ A link to a demo of our project can be found [here](https://youtu.be/fmiu5iuj_QA
 
 ## User Interactions 
 
-Information about the possible user interactions are detailed in this [file](/docs/user-interactions.md).
+Information about the possible user interactions are detailed in this [file](../docs/user-interactions.md).
 
 ## API 
 
-Information about the API user endpoints used are detailed in this [file](api.md).
+Information about the API user endpoints used are detailed in this [file](../docs/api.md).
 
 ## Planning 
 

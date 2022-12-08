@@ -14,8 +14,8 @@ A link to a demo of our project can be found [here](https://youtu.be/fmiu5iuj_QA
 ## Setup Instructions 
 
 1. Clone the respository
-2. Open the repo and run '''npm install''' to install the dependencies needed to run our project. More details about the dependencies we used can be found in the Dependencies section below
-3. Run '''npm start'''. This should automatically open http://localhost:3001/. If not, you can navigate to this link in your browser.
+2. Open the repo and run ```npm instal``` to install the dependencies needed to run our project. More details about the dependencies we used can be found in the Dependencies section below
+3. Run ```npm start```. This should automatically open http://localhost:3001/. If not, you can navigate to this link in your browser.
 4. When you are done running the program, hit '''CONTROL+C''' to end the session. 
 
 ## Dependencies 

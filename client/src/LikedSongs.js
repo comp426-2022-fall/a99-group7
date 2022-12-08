@@ -68,6 +68,7 @@ const LikedSongs = () => {
 
     return (
         <div>
+            <img src={require("./logo.png")} width="250px" height="200px" alt="logo"/>
             <div>
                 <div>
                     <button onClick={handleProfilePage}>View Profile</button>

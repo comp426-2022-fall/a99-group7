@@ -20,8 +20,7 @@ const Login = () => {
 
     return (
         <div>
-            <img src={require("./logo.png")} width="200px" height="200px" alt="logo"/>
-            <h1>TuneIn</h1>
+            <img src={require("./logo.png")} width="250px" height="200px" alt="logo"/>
             <form onSubmit={handleSubmit}>
                 <label>
                     <p>EMAIL</p>
